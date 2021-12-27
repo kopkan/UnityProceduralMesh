@@ -16,14 +16,6 @@ namespace Wcom.Shared
             _max = Mathf.Max(_max, value);
         }
 
-        public float GGG
-        {
-            get
-            {
-                return _min;
-            }
-        }
-
         public float min
         {
             get
