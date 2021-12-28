@@ -26,33 +26,32 @@ namespace Wcom.ProceduralMesh
             }
 
 
-            ArrayList arr = new ArrayList();
+            ArrayList foundTriangleIds = new ArrayList();
             for (int i = 0; i < _triangles.Length / MeshBase.vertexInTriangle; i++)
             {
-                Vector3 shared = MeshBase.getTriangleSharedCoord(_originalMesh, i);
+                Vector3 sharedCoord = MeshBase.getTriangleSharedCoord(_originalMesh, i);
 
                 for (int q = 0; q < sidesInSC.Length; q++)
                 {
-                    if (shared == sidesInSC[q])
+                    if (sharedCoord == sidesInSC[q])
                     {
-                        Debug.Log("Side id ID=" + i + " shared=" + shared);
-                        arr.Add(i);
+                        Debug.Log("Side id ID=" + i + " shared=" + sharedCoord);
+                        foundTriangleIds.Add(i);
                     }
                 }
             }
-            arr.Sort();
+            foundTriangleIds.Sort();
 
-            for (int i = arr.Count - 1; i >= 0; i--)
+            for (int i = foundTriangleIds.Count - 1; i >= 0; i--)
             {
-                Debug.Log("del arr[i]=" + arr[i] + " i=" + i);
-                _removeTriangle((int)arr[i]);
+                _removeTriangle((int)foundTriangleIds[i]);
             }
         }
 
         public Mesh getResultMesh()
         {
-
-            var newMesh = _originalMesh;
+            var newMesh = Object.Instantiate(_originalMesh);
+            newMesh.name = "MeshEdit";
             newMesh.triangles = _triangles;
             return newMesh;
         }
