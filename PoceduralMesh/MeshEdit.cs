@@ -35,7 +35,6 @@ namespace Wcom.ProceduralMesh
                 {
                     if (sharedCoord == sidesInSC[q])
                     {
-                        Debug.Log("Side id ID=" + i + " shared=" + sharedCoord);
                         foundTriangleIds.Add(i);
                     }
                 }
