@@ -57,9 +57,9 @@ namespace Wcom.ProceduralMesh
 
         void _removeTriangle(int sideId)
         {
-            int[] sli;
-            Shared.ArrayHelp.Cut(_triangles, out sli, sideId * MeshBase.vertexInTriangle, MeshBase.vertexInTriangle);
-            _triangles = (int[])sli;
+            int[] newTriagles;
+            Shared.ArrayHelp.Cut(_triangles, out newTriagles, sideId * MeshBase.vertexInTriangle, MeshBase.vertexInTriangle);
+            _triangles = (int[])newTriagles;
         }
     }
 }
